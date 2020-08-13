@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h2>
+  <%= @blog.title %>
+  </h2>
+</p>
+<div class="container">
+  <div class="col-10">
+    <p class="blog_text">
+      <%= @blog.text %>
+    </p>
+  </div>
+</div> 
+
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_blog_path(@blog), :class => "btn btn-primary" %> 
+<% end %>
+<%= link_to 'Back', blogs_path %>
