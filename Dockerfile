@@ -19,6 +19,7 @@ WORKDIR /app
 RUN bundle 
 ENV SECRET_KEY_BASE='$(rake secret)'
 RUN rake db:setup
+RUN rails webpacker:compile
 #RUN rake db:migrate 
 #ENV SECRET_KEY_BASE='$(rake secret)'
 
