@@ -1,7 +1,7 @@
 FROM ruby:2.6.6
 
 CMD apt update 
-CMD gem install bundle:2.1.4
+CMD gem install bundler:2.1.4
 
 CMD curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 CMD echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -14,7 +14,7 @@ RUN mkdir /app
 ADD . /app 
 WORKDIR /app
 
-RUN bundle --update bundler
+#RUN bundle --update bundler
 
 RUN bundle 
 RUN rake db:create 
