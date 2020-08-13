@@ -14,6 +14,8 @@ RUN mkdir /app
 ADD . /app 
 WORKDIR /app
 
+RUN bundle --update bundler
+
 RUN bundle 
 RUN rake db:create 
 RUN rake db:migrate 
