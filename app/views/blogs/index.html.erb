@@ -16,7 +16,13 @@
     <% @blogs.each do |blog| %>
       <tr>
         <td><%= blog.title %></td>
-        <td><%= blog.text %></td>
+        <td>
+          <% if blog.text.length > 200 %>
+            <%= blog.text[0..200].html_safe + "..." %>
+          <% else %>
+            <%= blog.text.html_safe %>
+          <% end %>
+        </td>
         <td><%= blog.created_at %></td>
         <td><%= link_to 'Show', blog, :class => "btn btn-light" %></td>
         <% if user_signed_in? %>
