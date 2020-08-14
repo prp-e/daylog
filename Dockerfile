@@ -4,7 +4,7 @@ CMD apt update
 CMD apt update build-essential
 CMD gem install bundler:2.1.4
 
-CMD RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+CMD RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 CMD apt update
 CMD apt install -y nodejs
 
