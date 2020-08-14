@@ -19,13 +19,8 @@ RUN mkdir /app
 ADD . /app 
 WORKDIR /app
 
-#RUN bundle --update bundler
-
 RUN bundle 
 ENV SECRET_KEY_BASE='$(rake secret)'
 RUN rake db:setup
 RUN rails assets:precompile
-#RUN rake db:migrate 
-#ENV SECRET_KEY_BASE='$(rake secret)'
 
-#RUN rails s -b 0.0.0.0 -e production 
