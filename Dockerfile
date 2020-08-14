@@ -19,6 +19,7 @@ RUN mkdir /app
 ADD . /app 
 WORKDIR /app
 
+RUN bundle config --local build.sassc --disable-march-tune-native
 RUN bundle 
 ENV SECRET_KEY_BASE='$(rake secret)'
 RUN rake db:setup
