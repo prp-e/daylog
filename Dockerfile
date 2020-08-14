@@ -1,17 +1,17 @@
 FROM ruby:2.6.6
 
-CMD apt update 
-CMD apt update build-essential
-CMD gem install bundler:2.1.4
+RUN apt update 
+RUN apt install build-essential
+RUN gem install bundler:2.1.4
 
-CMD RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-CMD apt update
-CMD apt install -y nodejs
+RUN RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt update
+RUN apt install -y nodejs
 
-CMD curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-CMD echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-CMD apt update 
-CMD apt install -y yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg |  apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" |  tee /etc/apt/sources.list.d/yarn.list
+RUN apt update 
+RUN apt install -y yarn
 
 ENV RAILS_ENV=production
 
@@ -24,8 +24,8 @@ WORKDIR /app
 RUN bundle 
 ENV SECRET_KEY_BASE='$(rake secret)'
 RUN rake db:setup
-RUN rails webpacker:compile
+RUN rails assets:precompile
 #RUN rake db:migrate 
 #ENV SECRET_KEY_BASE='$(rake secret)'
 
-CMD rails s -b 0.0.0.0 -e production 
+#RUN rails s -b 0.0.0.0 -e production 
