@@ -22,5 +22,7 @@ WORKDIR /app
 RUN bundle 
 ENV SECRET_KEY_BASE='$(rake secret)'
 RUN rake db:setup
+RUN yarn install --check-files
+RUN rails webpacker:install 
 RUN rails assets:precompile
 
