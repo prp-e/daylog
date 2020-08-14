@@ -6,7 +6,8 @@ CMD gem install bundler:2.1.4
 CMD curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 CMD echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 CMD apt update 
-CMD apt install yarn
+CMD apt install -y nodejs
+CMD apt install -y yarn
 
 ENV RAILS_ENV=production
 
